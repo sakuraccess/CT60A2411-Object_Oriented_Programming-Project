@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.util.Scanner;
 
 public class Main {
     private static final String MENU =
@@ -11,15 +11,28 @@ public class Main {
                     5. Add a showtime
                     6. Remove a showtime
                     7. View a showtime
-                    8. View all showtimes
+                    8. View all showtime
                     9. Buy a ticket
                     10. View seating
                     0. Exit""";
 
     public static void main(String[] args) {
 
+        Scanner input = new Scanner(System.in);
+        int option = -1;
+
         while (true) {
             System.out.println(MENU);
+            System.out.print("Enter your choice:");
+
+            option = Integer.parseInt(input.nextLine());
+
+            switch (option) {
+                case 1: {
+
+                }
+            }
+
         }
 
     }
