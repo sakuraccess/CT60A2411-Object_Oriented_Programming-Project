@@ -1,5 +1,26 @@
+import java.awt.*;
+
 public class Main {
+    private static final String MENU =
+            """
+                    Welcome to the LUT Kino at Yliopistonkatu!
+                    1. Add a movie
+                    2. Remove a movie
+                    3. View a movie
+                    4. View all movies
+                    5. Add a showtime
+                    6. Remove a showtime
+                    7. View a showtime
+                    8. View all showtimes
+                    9. Buy a ticket
+                    10. View seating
+                    0. Exit""";
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        while (true) {
+            System.out.println(MENU);
+        }
+
     }
 }
