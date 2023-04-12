@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Showtime {
     private Movie movie;
     private String date;
     private String time;
     private double ticketPrice;
+    private Seat[][] seats;
+    private int ticketsSold = 0;
 
     public Showtime(Movie movie, String date, String time, double ticketPrice) {
         this.movie = movie;
@@ -43,3 +48,5 @@ public class Showtime {
         this.ticketPrice = ticketPrice;
     }
 }
+
+

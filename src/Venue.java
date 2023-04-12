@@ -26,12 +26,3 @@ public class Venue {
     }
 }
 
-class Theater extends Venue {
-    private ArrayList<Movie> movies;
-    private ArrayList<Showtime> showtimes;
-    private Seat[][] seats;
-
-    public Theater(String name, String location) {
-        super(name, location);
-    }
-}

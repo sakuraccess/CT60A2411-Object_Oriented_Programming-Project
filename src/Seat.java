@@ -3,6 +3,16 @@ public class Seat {
     private final int column;
     private boolean available;
 
+    private int customerID;
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
     public Seat(int row, int column, boolean available) {
         this.row = row;
         this.column = column;

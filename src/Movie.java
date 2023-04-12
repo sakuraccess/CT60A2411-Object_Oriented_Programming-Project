@@ -2,15 +2,21 @@ public class Movie {
     private String title;
     private String releaseYear;
     private String director;
-    private String duration;
+    private int duration;
     private String genre;
 
-    public Movie(String title, String releaseYear, String director, String duration, String genre) {
+    public Movie(String title, String releaseYear, String director, int duration, String genre) {
         this.title = title;
         this.releaseYear = releaseYear;
         this.director = director;
         this.duration = duration;
         this.genre = genre;
+    }
+
+    public Movie(String title, String director, int duration) {
+        this.title = title;
+        this.director = director;
+        this.duration = duration;
     }
 
     public String getTitle() {
@@ -37,15 +43,15 @@ public class Movie {
         this.director = director;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public String getGenre() {
+    public String genre() {
         return genre;
     }
 
