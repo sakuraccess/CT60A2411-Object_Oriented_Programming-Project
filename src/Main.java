@@ -39,6 +39,7 @@ public class Main {
 
             switch (option) {
                 case 0:
+                    System.out.println("Goodbye!");
                     System.exit(0);
 
                 case 1:

@@ -1,17 +1,21 @@
-public class Movie implements java.io.Serializable{
+public class Movie implements java.io.Serializable {
     private String title;
     private String releaseYear;
     private String director;
     private int duration;
     private String genre;
+    private String review;
+    private float rating;
 
-    public Movie(String title, String releaseYear, String director, int duration, String genre) {
-        this.title = title;
-        this.releaseYear = releaseYear;
-        this.director = director;
-        this.duration = duration;
-        this.genre = genre;
-    }
+    private int numberOfRatings;
+
+//    public Movie(String title, String releaseYear, String director, int duration, String genre) {
+//        this.title = title;
+//        this.releaseYear = releaseYear;
+//        this.director = director;
+//        this.duration = duration;
+//        this.genre = genre;
+//    }
 
     public Movie(String title, String director, int duration) {
         this.title = title;
@@ -55,8 +59,36 @@ public class Movie implements java.io.Serializable{
         return genre;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public int getNumberOfRatings() {
+        return numberOfRatings;
+    }
+
+    public void setNumberOfRatings(int numberOfRatings) {
+        this.numberOfRatings = numberOfRatings;
     }
 
 }

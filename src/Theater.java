@@ -119,16 +119,21 @@ class Theater extends Venue {
     }
 
     private void printMovieInfo(Movie movie) {
+        System.out.println();
         System.out.println("Title: " + movie.getTitle());
-        System.out.println("ReleaseYear: " + movie.getReleaseYear());
         System.out.println("Director: " + movie.getDirector());
+        System.out.println("ReleaseYear: " + movie.getReleaseYear());
+        System.out.println("Review: " + movie.getReview());
+        System.out.println("Genre: " + movie.getGenre());
         System.out.println("Duration: " + movie.getDuration());
-        System.out.println("Genre: " + movie.genre());
+        System.out.println("Rating: " + movie.getRating());
+        System.out.println("Number of Ratings:" + movie.getNumberOfRatings());
         System.out.println();
     }
 
     private void printShowtimeInfo(Showtime showtime) {
-        System.out.println("Title: " + showtime.getMovie().getTitle());
+        System.out.println();
+        System.out.println("Movie: " + showtime.getMovie().getTitle());
         System.out.println("Time: " + showtime.getTime());
         System.out.println("Date: " + showtime.getDate());
         System.out.println("Price: " + showtime.getTicketPrice());
@@ -136,7 +141,7 @@ class Theater extends Venue {
     }
 
     public void viewMovie(Scanner input) {
-        System.out.println("Please enter the title of the movie you want to view:");
+        System.out.println("Enter the movie title:");
         String title = input.nextLine();
 
         Iterator<Movie> movieIterator = movies.iterator();
@@ -155,6 +160,11 @@ class Theater extends Venue {
     public void viewAllMovies() {
         Iterator<Movie> movieIterator = movies.iterator();
 
+        if (!movieIterator.hasNext()) {
+            System.out.println("There doesn't have movies right now.");
+            return;
+        }
+
         while (movieIterator.hasNext()) {
             var movie = movieIterator.next();
             printMovieInfo(movie);
@@ -164,7 +174,7 @@ class Theater extends Venue {
     }
 
     public void addShowtime(Scanner input) {
-        System.out.println("Enter the movie title of the showtime:");
+        System.out.println("Enter the title of the movie:");
         String title = input.nextLine();
 
         Iterator<Movie> movieIterator = movies.iterator();
@@ -176,16 +186,16 @@ class Theater extends Venue {
             return;
         }
 
-        System.out.println("Enter the time of the showtime:");
+        System.out.println("Enter the time of the showtime (e.g. 7:00 PM):");
         String time = input.nextLine();
 
-        System.out.println("Enter the date(yyyy-mm-dd) of the showtime:");
+        System.out.println("Enter the date of the showtime (e.g. 2022-12-15):");
         String date = input.nextLine();
 
         double ticketPrice;
         while (true) {
             try {
-                System.out.println("Enter the ticket price of the showtime:");
+                System.out.println("Enter the ticket price for the showtime:");
                 ticketPrice = Double.parseDouble(input.nextLine());
                 break;
             } catch (Exception e) {
@@ -251,10 +261,7 @@ class Theater extends Venue {
     }
 
     public void viewAllShowtime() {
-        Iterator<Showtime> showtimeIterator = showtimes.iterator();
-
-        while (showtimeIterator.hasNext()) {
-            var showtime = showtimeIterator.next();
+        for (Showtime showtime : showtimes) {
             printShowtimeInfo(showtime);
         }
 
@@ -272,6 +279,7 @@ class Theater extends Venue {
         String date = input.nextLine();
 
         System.out.println("Enter the seat (row and column):");
+
         int row, column;
 
         while (true) {
@@ -296,7 +304,7 @@ class Theater extends Venue {
             return;
         }
 
-        var seats = showtime.getSeats();
+        Seat[][] seats = showtime.getSeats();
         row -= 1;
         column -= 1;
         if (seats[row][column].isAvailable()) {
