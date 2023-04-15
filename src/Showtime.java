@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class Showtime implements java.io.Serializable{
-    private Movie movie;
-    private String date;
-    private String time;
-    private double ticketPrice;
+    private final Movie movie;
+    private final String date;
+    private final String time;
+    private final double ticketPrice;
     private Seat[][] seats = new Seat[10][10];
+//    private Boolean[][] seats = new Boolean[10][10];
 
     public Seat[][] getSeats() {
         return seats;
@@ -16,7 +14,7 @@ public class Showtime implements java.io.Serializable{
         this.seats = seats;
     }
 
-    private int ticketsSold = 0;
+//    private int ticketsSold = 0;
 
     public Showtime(Movie movie, String date, String time, double ticketPrice) {
         this.movie = movie;
@@ -34,33 +32,33 @@ public class Showtime implements java.io.Serializable{
         return movie;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
+//    public void setMovie(Movie movie) {
+//        this.movie = movie;
+//    }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
 
     public String getTime() {
         return time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
+//    public void setTime(String time) {
+//        this.time = time;
+//    }
 
     public double getTicketPrice() {
         return ticketPrice;
     }
 
-    public void setTicketPrice(double ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
+//    public void setTicketPrice(double ticketPrice) {
+//        this.ticketPrice = ticketPrice;
+//    }
 }
 
 

@@ -5,13 +5,13 @@ public class Seat implements java.io.Serializable{
 
     private int customerID;
 
-    public int getCustomerID() {
-        return customerID;
-    }
+//    public int getCustomerID() {
+//        return customerID;
+//    }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
+//    public void setCustomerID(int customerID) {
+//        this.customerID = customerID;
+//    }
 
     public Seat(int row, int column, boolean available) {
         this.row = row;
@@ -19,17 +19,17 @@ public class Seat implements java.io.Serializable{
         this.available = available;
     }
 
-    public int getRow() {
-        return row;
-    }
+//    public int getRow() {
+//        return row;
+//    }
 
 //    public void setRow(int row) {
 //        this.row = row;
 //    }
 
-    public int getColumn() {
-        return column;
-    }
+//    public int getColumn() {
+//        return column;
+//    }
 
 //    public void setColumn(int column) {
 //        this.column = column;

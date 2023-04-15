@@ -18,6 +18,9 @@ public class Main {
             0. Exit""";
 
     public static void main(String[] args) {
+        System.out.println("""
+                If you want to use exiting data,
+                please choose 11 first.""");
 
         Theater theater = new Theater("LUT Kino", "Yliopistonkatu");
 
@@ -92,6 +95,11 @@ public class Main {
 
                     theater = loadData(theater);
                     break;
+
+//                case 13:
+//                    TMDBAPI api = new TMDBAPI();
+//                    api.getMovies();
+//                    break;
 
             }
 

@@ -49,6 +49,9 @@ class Theater extends Venue {
         System.out.println("Enter the movie title:");
         String title = input.nextLine();
 
+        TMDBAPI api = new TMDBAPI();
+        Movie movie = api.getMovies(title);
+
 //        for (Movie movie : movies) {
 //            if (title.equals(movie.getTitle())) {
 //                System.out.println("""
@@ -307,14 +310,19 @@ class Theater extends Venue {
         Seat[][] seats = showtime.getSeats();
         row -= 1;
         column -= 1;
+
         if (seats[row][column].isAvailable()) {
             showtimeIterator.remove();
             seats[row][column].setAvailable(false);
             showtime.setSeats(seats);
             showtimes.add(showtime);
-        }
+            System.out.println("Ticket bought!");
 
-        System.out.println("Ticket bought!");
+        } else {
+            System.out.println("""
+                    The seat is not available...
+                    Please choose another seat.""");
+        }
     }
 
     public void viewSeating(Scanner input) {
