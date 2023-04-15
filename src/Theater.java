@@ -176,11 +176,11 @@ class Theater extends Venue {
             return;
         }
 
-        System.out.println("Enter the date(yyyy-mm-dd) of the showtime:");
-        String date = input.nextLine();
-
         System.out.println("Enter the time of the showtime:");
         String time = input.nextLine();
+
+        System.out.println("Enter the date(yyyy-mm-dd) of the showtime:");
+        String date = input.nextLine();
 
         double ticketPrice;
         while (true) {
@@ -201,11 +201,11 @@ class Theater extends Venue {
     }
 
     public void removeShowtime(Scanner input) {
-        System.out.println("Enter the showtime date:");
-        String date = input.nextLine();
-
         System.out.println("Enter the time of the showtime:");
         String time = input.nextLine();
+
+        System.out.println("Enter the showtime date:");
+        String date = input.nextLine();
 
         Iterator<Showtime> showtimeIterator = showtimes.iterator();
         Showtime showtime = findShowtime(showtimeIterator, date, time);
@@ -217,11 +217,11 @@ class Theater extends Venue {
 
         System.out.println("""
                 Are you sure you want to delete this showtime?
-                Enter 'YES' to confirm.""");
+                Enter 'yes' to confirm.""");
 
         String confirmToken = input.nextLine();
 
-        if (confirmToken.equals("YES")) {
+        if (confirmToken.equals("yes")) {
             showtimeIterator.remove();
             System.out.println("Successful removed.");
         } else {
@@ -231,11 +231,11 @@ class Theater extends Venue {
     }
 
     public void viewShowtime(Scanner input) {
-        System.out.println("Enter the showtime date:");
-        String date = input.nextLine();
-
         System.out.println("Enter the time of the showtime:");
         String time = input.nextLine();
+
+        System.out.println("Enter the showtime date:");
+        String date = input.nextLine();
 
         Iterator<Showtime> showtimeIterator = showtimes.iterator();
         Showtime showtime = findShowtime(showtimeIterator, date, time);
@@ -260,7 +260,7 @@ class Theater extends Venue {
 
         System.out.println("All information has been printed.");
     }
-    
+
     public void buyTicket(Scanner input) {
         System.out.println("Enter the movie title:");
         String title = input.nextLine();
@@ -273,8 +273,20 @@ class Theater extends Venue {
 
         System.out.println("Enter the seat (row and column):");
         int row, column;
-        row = Integer.parseInt(input.next());
-        column = Integer.parseInt(input.next());
+
+        while (true) {
+            try {
+                row = Integer.parseInt(input.next());
+                column = Integer.parseInt(input.next());
+                input.nextLine();
+                break;
+
+            } catch (Exception e) {
+                System.out.println("""
+                        The input is not a valid number.
+                        Please try again.""");
+            }
+        }
 
         Iterator<Showtime> showtimeIterator = showtimes.iterator();
         Showtime showtime = findShowtime(showtimeIterator, date, time);
@@ -285,6 +297,8 @@ class Theater extends Venue {
         }
 
         var seats = showtime.getSeats();
+        row -= 1;
+        column -= 1;
         if (seats[row][column].isAvailable()) {
             showtimeIterator.remove();
             seats[row][column].setAvailable(false);
@@ -305,6 +319,25 @@ class Theater extends Venue {
         System.out.println("Enter the showtime (date):");
         String date = input.nextLine();
 
+        Iterator<Showtime> showtimeIterator = showtimes.iterator();
+        Showtime showtime = findShowtime(showtimeIterator, date, time);
 
+        if (showtime == null) {
+            System.out.println("The showtime you selected doesn't exit.");
+            return;
+        }
+
+        var seats = showtime.getSeats();
+
+        for (int row = 0; row < 10; row++) {
+            for (int column = 0; column < 10; column++) {
+                if (seats[row][column].isAvailable()) {
+                    System.out.print("[0] ");
+                } else {
+                    System.out.print("[X] ");
+                }
+            }
+            System.out.println();
+        }
     }
 }

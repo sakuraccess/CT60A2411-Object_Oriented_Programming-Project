@@ -29,7 +29,13 @@ public class Main {
             System.out.println(MENU);
             System.out.println("Enter your choice:");
 
-            option = Integer.parseInt(input.nextLine());
+
+            try {
+                option = Integer.parseInt(input.nextLine());
+            } catch (Exception e) {
+                System.out.println("The input is not a valid number.");
+                break;
+            }
 
             switch (option) {
                 case 0:
