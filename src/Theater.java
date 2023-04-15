@@ -4,7 +4,7 @@ import java.util.Scanner;
 //import org.apache.commons.lang3.*;
 //import commons-lang3;
 
-class Theater extends Venue{
+class Theater extends Venue {
     private final ArrayList<Movie> movies = new ArrayList<>();
     private final ArrayList<Showtime> showtimes = new ArrayList<>();
 //    private Seat[][] seats;
@@ -127,6 +127,14 @@ class Theater extends Venue{
         System.out.println();
     }
 
+    private void printShowtimeInfo(Showtime showtime) {
+        System.out.println("Title: " + showtime.getMovie().getTitle());
+        System.out.println("Time: " + showtime.getTime());
+        System.out.println("Date: " + showtime.getDate());
+        System.out.println("Price: " + showtime.getTicketPrice());
+        System.out.println();
+    }
+
     public void viewMovie(Scanner input) {
         System.out.println("Please enter the title of the movie you want to view:");
         String title = input.nextLine();
@@ -168,10 +176,10 @@ class Theater extends Venue{
             return;
         }
 
-        System.out.println("Enter the date of the showtime:");
+        System.out.println("Enter the date(yyyy-mm-dd) of the showtime:");
         String date = input.nextLine();
 
-        System.out.println("Enter the time(yyyy-mm-dd) of the showtime:");
+        System.out.println("Enter the time of the showtime:");
         String time = input.nextLine();
 
         double ticketPrice;
@@ -222,7 +230,81 @@ class Theater extends Venue{
 
     }
 
-    public void viewShowtime() {
+    public void viewShowtime(Scanner input) {
+        System.out.println("Enter the showtime date:");
+        String date = input.nextLine();
+
+        System.out.println("Enter the time of the showtime:");
+        String time = input.nextLine();
+
+        Iterator<Showtime> showtimeIterator = showtimes.iterator();
+        Showtime showtime = findShowtime(showtimeIterator, date, time);
+
+        if (showtime == null) {
+            System.out.println("The showtime you selected doesn't exit.");
+            return;
+        }
+
+        printShowtimeInfo(showtime);
+
+        System.out.println("All information has been printed.");
+    }
+
+    public void viewAllShowtime() {
+        Iterator<Showtime> showtimeIterator = showtimes.iterator();
+
+        while (showtimeIterator.hasNext()) {
+            var showtime = showtimeIterator.next();
+            printShowtimeInfo(showtime);
+        }
+
+        System.out.println("All information has been printed.");
+    }
+    
+    public void buyTicket(Scanner input) {
+        System.out.println("Enter the movie title:");
+        String title = input.nextLine();
+
+        System.out.println("Enter the showtime (time):");
+        String time = input.nextLine();
+
+        System.out.println("Enter the showtime (date):");
+        String date = input.nextLine();
+
+        System.out.println("Enter the seat (row and column):");
+        int row, column;
+        row = Integer.parseInt(input.next());
+        column = Integer.parseInt(input.next());
+
+        Iterator<Showtime> showtimeIterator = showtimes.iterator();
+        Showtime showtime = findShowtime(showtimeIterator, date, time);
+
+        if (showtime == null) {
+            System.out.println("The showtime you selected doesn't exit.");
+            return;
+        }
+
+        var seats = showtime.getSeats();
+        if (seats[row][column].isAvailable()) {
+            showtimeIterator.remove();
+            seats[row][column].setAvailable(false);
+            showtime.setSeats(seats);
+            showtimes.add(showtime);
+        }
+
+        System.out.println("Ticket bought!");
+    }
+
+    public void viewSeating(Scanner input) {
+        System.out.println("Enter the movie title:");
+        String title = input.nextLine();
+
+        System.out.println("Enter the showtime (time):");
+        String time = input.nextLine();
+
+        System.out.println("Enter the showtime (date):");
+        String date = input.nextLine();
+
 
     }
 }

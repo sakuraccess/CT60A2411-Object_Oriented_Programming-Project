@@ -19,13 +19,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Theater cinema = new Theater("LUT Kino", "Yliopistonkatu");
+        Theater theater = new Theater("LUT Kino", "Yliopistonkatu");
 
         Scanner input = new Scanner(System.in);
         int option = -1;
 
         while (true) {
-            System.out.printf("\nWelcome to the %s at %s!\n", cinema.getName(), cinema.getLocation());
+            System.out.printf("\nWelcome to the %s at %s!\n", theater.getName(), theater.getLocation());
             System.out.println(MENU);
             System.out.println("Enter your choice:");
 
@@ -36,38 +36,54 @@ public class Main {
                     System.exit(0);
 
                 case 1:
-                    cinema.addMovie(input);
+                    theater.addMovie(input);
                     break;
 
                 case 2:
-                    cinema.removeMovie(input);
+                    theater.removeMovie(input);
                     break;
 
                 case 3:
-                    cinema.viewMovie(input);
+                    theater.viewMovie(input);
                     break;
 
                 case 4:
-                    cinema.viewAllMovies();
+                    theater.viewAllMovies();
                     break;
 
                 case 5:
-                    cinema.addShowtime(input);
+                    theater.addShowtime(input);
                     break;
 
                 case 6:
-                    cinema.removeShowtime(input);
+                    theater.removeShowtime(input);
+                    break;
+
+                case 7:
+                    theater.viewShowtime(input);
+                    break;
+
+                case 8:
+                    theater.viewAllShowtime();
+                    break;
+
+                case 9:
+                    theater.buyTicket(input);
+                    break;
+
+                case 10:
+                    theater.viewSeating(input);
                     break;
 
                 case 11:
-                    saveData(cinema);
+                    saveData(theater);
                     break;
 
                 case 12:
                     if (warning(input))
                         break;
 
-                    cinema = loadData(cinema);
+                    theater = loadData(theater);
                     break;
 
             }
@@ -80,11 +96,11 @@ public class Main {
     private static boolean warning(Scanner input) {
         System.out.println("""
                 Changes you made in this procedure will be lost, continue?
-                (Enter 'YES' to continue.)""");
+                (Enter 'yes' to continue.)""");
 
         String confirmToken = input.nextLine();
 
-        if (confirmToken.equals("YES")) {
+        if (confirmToken.equals("yes")) {
             System.out.println("Operation confirmed.");
             return false;
         } else {
@@ -104,11 +120,14 @@ public class Main {
 
             System.out.println("Cinema data has been loaded from a file successfully.");
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             cinemaData = cinema;
             System.out.println("""
                     Data loading failed, please try again.
                     Do not find exiting data.""");
+        } catch (ClassNotFoundException c) {
+            cinemaData = cinema;
+            System.out.println("class not found.");
         }
 
         return (Theater) cinemaData;

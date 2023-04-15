@@ -41,3 +41,242 @@ Genre: [Action, Adventure, Fantasy, Science Fiction]
 Duration: 162
 Rating: 7.5
 Number of Ratings: 26995
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 1
+Enter the movie title: Avatar
+Enter the director: James Cameron
+Enter the duration: 162
+Movie added successfully!
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 1
+Enter the movie title: The Godfather
+Enter the director: Francis Ford Coppola
+Enter the duration: 175
+Movie added successfully!
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 4
+
+Title: Avatar
+Director: James Cameron
+Release Year: 2009-12-15
+Review: In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.
+Genre: [Action, Adventure, Fantasy, Science Fiction]
+Duration: 162
+Rating: 7.569
+Number of Ratings: 28872
+
+Title: The Godfather
+Director: Francis Ford Coppola
+Release Year: 1972-03-14
+Review: Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.
+Genre: [Drama, Crime]
+Duration: 175
+Rating: 8.711
+Number of Ratings: 17735
+
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 5
+Enter the title of the movie: The Godfather
+Enter the time of the showtime (e.g. 7:00 PM): 6:00 PM
+Enter the date of the showtime (e.g. 2022-12-15): 2023-04-14
+Enter the ticket price for the showtime: 30
+Showtime added successfully!
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 5
+Enter the title of the movie: The Godfather
+Enter the time of the showtime (e.g. 7:00 PM): 9:00 AM
+Enter the date of the showtime (e.g. 2022-12-15): 2023-04-15
+Enter the ticket price for the showtime: 40
+Showtime added successfully!
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 8
+
+Movie: The Godfather
+Time: 6:00 PM
+Date: 2023-04-14
+Price: 30.0
+
+Movie: The Godfather
+Time: 9:00 AM
+Date: 2023-04-15
+Price: 40.0
+
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 9
+Enter the movie title: The Godfather
+Enter the showtime (time): 6:00 PM
+Enter the showtime (date): 2023-04-14
+Enter the seat (row and column): 3 5
+Ticket bought!
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 10
+Enter the movie title: The Godfather
+Enter the showtime (time): 6:00 PM
+Enter the showtime (date): 2023-04-14
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [X] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 9
+Enter the movie title: The Godfather
+Enter the showtime (time): 6:00 PM
+Enter the showtime (date): 2023-04-14
+Enter the seat (row and column): 3 4
+Ticket bought!
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 10
+Enter the movie title: The Godfather
+Enter the showtime (time): 6:00 PM
+Enter the showtime (date): 2023-04-14
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [X] [X] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+[O] [O] [O] [O] [O] [O] [O] [O] [O] [O]
+
+Welcome to the LUT Kino at Yliopistonkatu!
+1. Add a movie
+2. Remove a movie
+3. View a movie
+4. View all movies
+5. Add a showtime
+6. Remove a showtime
+7. View a showtime
+8. View all showtimes
+9. Buy a ticket
+10. View seating
+0. Exit
+Enter your choice: 0
+Goodbye!

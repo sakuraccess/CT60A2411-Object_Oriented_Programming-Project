@@ -7,6 +7,15 @@ public class Showtime implements java.io.Serializable{
     private String time;
     private double ticketPrice;
     private Seat[][] seats;
+
+    public Seat[][] getSeats() {
+        return seats;
+    }
+
+    public void setSeats(Seat[][] seats) {
+        this.seats = seats;
+    }
+
     private int ticketsSold = 0;
 
     public Showtime(Movie movie, String date, String time, double ticketPrice) {
