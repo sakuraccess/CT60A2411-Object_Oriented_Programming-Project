@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Showtime {
+public class Showtime implements java.io.Serializable{
     private Movie movie;
     private String date;
     private String time;

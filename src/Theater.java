@@ -4,7 +4,7 @@ import java.util.Scanner;
 //import org.apache.commons.lang3.*;
 //import commons-lang3;
 
-class Theater extends Venue {
+class Theater extends Venue{
     private final ArrayList<Movie> movies = new ArrayList<>();
     private final ArrayList<Showtime> showtimes = new ArrayList<>();
 //    private Seat[][] seats;
@@ -219,6 +219,10 @@ class Theater extends Venue {
         } else {
             System.out.println("Removing operation cancelled.");
         }
+
+    }
+
+    public void viewShowtime() {
 
     }
 }

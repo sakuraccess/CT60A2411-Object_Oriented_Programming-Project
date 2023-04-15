@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Venue {
+public class Venue implements java.io.Serializable{
     protected String name;
     protected String location;
 

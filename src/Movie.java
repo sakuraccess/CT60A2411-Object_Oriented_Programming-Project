@@ -1,4 +1,4 @@
-public class Movie {
+public class Movie implements java.io.Serializable{
     private String title;
     private String releaseYear;
     private String director;
