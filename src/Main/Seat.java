@@ -1,3 +1,5 @@
+package Main;
+
 public class Seat implements java.io.Serializable{
     private final int row;
     private final int column;

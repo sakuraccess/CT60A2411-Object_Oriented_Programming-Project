@@ -1,3 +1,7 @@
+package Main;
+
+//import API.TMDBAPI;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -25,7 +29,7 @@ public class Main {
         Theater theater = new Theater("LUT Kino", "Yliopistonkatu");
 
         Scanner input = new Scanner(System.in);
-        int option = -1;
+        int option;
 
         while (true) {
             System.out.printf("\nWelcome to the %s at %s!\n", theater.getName(), theater.getLocation());
@@ -37,7 +41,7 @@ public class Main {
                 option = Integer.parseInt(input.nextLine());
             } catch (Exception e) {
                 System.out.println("The input is not a valid number.");
-                break;
+                continue;
             }
 
             switch (option) {
@@ -98,7 +102,7 @@ public class Main {
 
 //                case 13:
 //                    TMDBAPI api = new TMDBAPI();
-//                    api.getMovies();
+//                    api.getMovies("Jack Reacher");
 //                    break;
 
             }
@@ -125,7 +129,7 @@ public class Main {
     }
 
     private static Theater loadData(Theater cinema) {
-        Object cinemaData = null;
+        Object cinemaData;
 
         try {
             ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream("cinema_data.ser"));

@@ -1,3 +1,5 @@
+package Main;
+
 public class Showtime implements java.io.Serializable{
     private final Movie movie;
     private final String date;
@@ -32,7 +34,7 @@ public class Showtime implements java.io.Serializable{
         return movie;
     }
 
-//    public void setMovie(Movie movie) {
+//    public void setMovie(Main.Movie movie) {
 //        this.movie = movie;
 //    }
 

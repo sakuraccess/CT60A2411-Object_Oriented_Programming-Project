@@ -1,3 +1,7 @@
+package Main;
+
+import API.TMDBAPI;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -50,7 +54,7 @@ class Theater extends Venue {
         String title = input.nextLine();
 
         TMDBAPI api = new TMDBAPI();
-        Movie movie = api.getMovies(title);
+        Movie movie = api.searchMovie(title);
 
 //        for (Movie movie : movies) {
 //            if (title.equals(movie.getTitle())) {
@@ -63,12 +67,14 @@ class Theater extends Venue {
 
         System.out.println("Enter the director:");
         String director = input.nextLine();
+        movie.setDirector(director);
 
         int duration;
         while (true) {
             try {
                 System.out.println("Enter the duration:");
                 duration = Integer.parseInt(input.nextLine());
+                movie.setDuration(duration);
                 break;
             } catch (Exception e) {
                 System.out.println("""
@@ -77,7 +83,7 @@ class Theater extends Venue {
             }
         }
 
-        movies.add(new Movie(title, director, duration));
+        movies.add(movie);
 
         System.out.println("Movie added successfully!");
     }
