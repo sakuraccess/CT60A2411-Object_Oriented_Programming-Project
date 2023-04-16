@@ -22,8 +22,8 @@ public class Menu {
 
 
     public static void main(String[] args) {
-        System.out.println("If you want to use existing data,\n" +
-                "please choose 11 first.");
+//        System.out.println("If you want to use existing data,\n" +
+//                "please choose 11 first.");
 
         Theater theater = new Theater("LUT Kino", "Yliopistonkatu");
 
