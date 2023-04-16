@@ -9,8 +9,8 @@ import java.util.Scanner;
 //import commons-lang3;
 
 class Theater extends Venue {
-    private final ArrayList<Movie> movies = new ArrayList<>();
-    private final ArrayList<Showtime> showtimes = new ArrayList<>();
+    private ArrayList<Movie> movies = new ArrayList<>();
+    private ArrayList<Showtime> showtimes = new ArrayList<>();
 //    private Seat[][] seats;
 
     public Theater(String name, String location) {
@@ -77,9 +77,9 @@ class Theater extends Venue {
                 movie.setDuration(duration);
                 break;
             } catch (Exception e) {
-                System.out.println("""
-                        Please enter a legal integer.
-                        Try again.""");
+                System.out.println("Please enter a legal integer.\n" +
+                        "Try again.");
+
             }
         }
 
@@ -112,9 +112,9 @@ class Theater extends Venue {
             return;
         }
 
-        System.out.println("""
-                Are you sure you want to delete this movie?
-                Enter 'YES' to confirm.""");
+        System.out.println("Are you sure you want to delete this movie?\n" +
+                "Enter 'YES' to confirm.");
+
 
         String confirmToken = input.nextLine();
 
@@ -208,9 +208,9 @@ class Theater extends Venue {
                 ticketPrice = Double.parseDouble(input.nextLine());
                 break;
             } catch (Exception e) {
-                System.out.println("""
-                        Please enter a legal floating point price.
-                        Try again.""");
+                System.out.println("Please enter a legal floating point price.\n" +
+                        "Try again.");
+
             }
         }
 
@@ -220,10 +220,13 @@ class Theater extends Venue {
     }
 
     public void removeShowtime(Scanner input) {
-        System.out.println("Enter the time of the showtime:");
+        System.out.println("Enter the title of the movie:");
+        String title = input.nextLine();
+
+        System.out.println("Enter the time of the showtime (e.g. 7:00 PM):");
         String time = input.nextLine();
 
-        System.out.println("Enter the showtime date:");
+        System.out.println("Enter the date of the showtime (e.g. 2022-12-15):");
         String date = input.nextLine();
 
         Iterator<Showtime> showtimeIterator = showtimes.iterator();
@@ -234,9 +237,9 @@ class Theater extends Venue {
             return;
         }
 
-        System.out.println("""
-                Are you sure you want to delete this showtime?
-                Enter 'yes' to confirm.""");
+        System.out.println("Are you sure you want to delete this showtime?\n" +
+                "Enter 'yes' to confirm.");
+
 
         String confirmToken = input.nextLine();
 
@@ -250,10 +253,13 @@ class Theater extends Venue {
     }
 
     public void viewShowtime(Scanner input) {
-        System.out.println("Enter the time of the showtime:");
+        System.out.println("Enter the title of the movie:");
+        String title = input.nextLine();
+
+        System.out.println("Enter the time of the showtime (e.g. 7:00 PM):");
         String time = input.nextLine();
 
-        System.out.println("Enter the showtime date:");
+        System.out.println("Enter the date of the showtime (e.g. 2022-12-15):");
         String date = input.nextLine();
 
         Iterator<Showtime> showtimeIterator = showtimes.iterator();
@@ -299,9 +305,9 @@ class Theater extends Venue {
                 break;
 
             } catch (Exception e) {
-                System.out.println("""
-                        The input is not a valid number.
-                        Please try again.""");
+                System.out.println("The input is not a valid number.\n" +
+                        "Please try again.");
+
             }
         }
 
@@ -325,9 +331,9 @@ class Theater extends Venue {
             System.out.println("Ticket bought!");
 
         } else {
-            System.out.println("""
-                    The seat is not available...
-                    Please choose another seat.""");
+            System.out.println("The seat is not available...\n" +
+                    "Please choose another seat.");
+
         }
     }
 
@@ -361,5 +367,21 @@ class Theater extends Venue {
             }
             System.out.println();
         }
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
+    public ArrayList<Showtime> getShowtimes() {
+        return showtimes;
+    }
+
+    public void setMovies(ArrayList<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public void setShowtimes(ArrayList<Showtime> showtimes) {
+        this.showtimes = showtimes;
     }
 }

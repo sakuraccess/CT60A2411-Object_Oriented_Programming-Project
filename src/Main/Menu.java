@@ -3,26 +3,27 @@ package Main;
 //import API.TMDBAPI;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
-    private static final String MENU = """
-            1. Add a movie
-            2. Remove a movie
-            3. View a movie
-            4. View all movies
-            5. Add a showtime
-            6. Remove a showtime
-            7. View a showtime
-            8. View all showtime
-            9. Buy a ticket
-            10. View seating
-            0. Exit""";
+public class Menu {
+    private static final String MENU =
+                    "1. Add a movie\n" +
+                    "2. Remove a movie\n" +
+                    "3. View a movie\n" +
+                    "4. View all movies\n" +
+                    "5. Add a showtime\n" +
+                    "6. Remove a showtime\n" +
+                    "7. View a showtime\n" +
+                    "8. View all showtime\n" +
+                    "9. Buy a ticket\n" +
+                    "10. View seating\n" +
+                    "0. Exit";
+
 
     public static void main(String[] args) {
-        System.out.println("""
-                If you want to use exiting data,
-                please choose 11 first.""");
+        System.out.println("If you want to use existing data,\n" +
+                "please choose 11 first.");
 
         Theater theater = new Theater("LUT Kino", "Yliopistonkatu");
 
@@ -87,16 +88,16 @@ public class Main {
                     theater.viewSeating(input);
                     break;
 
-//                case 11:
-//                    saveData(theater);
-//                    break;
-//
-//                case 12:
-//                    if (warning(input))
-//                        break;
-//
-//                    theater = loadData(theater);
-//                    break;
+                case 11:
+                    saveData(theater.getMovies());
+                    break;
+
+                case 12:
+                    if (warning(input))
+                        break;
+
+                    theater.setMovies(loadData());
+                    break;
 
 //                case 13:
 //                    TMDBAPI api = new TMDBAPI();
@@ -111,9 +112,9 @@ public class Main {
 
 
     private static boolean warning(Scanner input) {
-        System.out.println("""
-                Changes you made in this procedure will be lost, continue?
-                (Enter 'yes' to continue.)""");
+        System.out.println("Changes you made in this procedure will be lost, continue?\n" +
+                "(Enter 'yes' to continue.)");
+
 
         String confirmToken = input.nextLine();
 
@@ -126,38 +127,38 @@ public class Main {
         }
     }
 
-    private static Theater loadData(Theater cinema) {
-        Object cinemaData;
+    private static ArrayList<Movie> loadData() {
+        Object movieData;
 
         try {
-            ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream("cinema_data.ser"));
+            ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream("movies.ser"));
 
-            cinemaData = objectIn.readObject();
+            movieData = objectIn.readObject();
             objectIn.close();
 
-            System.out.println("Cinema data has been loaded from a file successfully.");
+            System.out.println("Movies' data has been loaded from a file successfully.");
 
         } catch (IOException e) {
-            cinemaData = cinema;
-            System.out.println("""
-                    Data loading failed, please try again.
-                    Do not find exiting data.""");
+            movieData = null;
+            System.out.println("Data loading failed, please try again.\n" +
+                    "Do not find existing data.");
+
         } catch (ClassNotFoundException c) {
-            cinemaData = cinema;
+            movieData = null;
             System.out.println("class not found.");
         }
 
-        return (Theater) cinemaData;
+        return (ArrayList<Movie>) movieData;
     }
 
-    private static void saveData(Theater cinema) {
+    private static void saveData(ArrayList<Movie> movies) {
         try {
-            ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream("cinema_data.ser"));
+            ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream("movies.ser"));
 
-            objectOut.writeObject(cinema);
+            objectOut.writeObject(movies);
             objectOut.close();
 
-            System.out.println("Data have been saved successfully.");
+            System.out.println("Movies' data have been saved successfully.");
 
         } catch (IOException e) {
             System.out.println("Failed to save data, please try again.");
