@@ -17,8 +17,6 @@ public class Main {
             8. View all showtime
             9. Buy a ticket
             10. View seating
-            11. Save data.
-            12. Load exiting data.
             0. Exit""";
 
     public static void main(String[] args) {
@@ -89,16 +87,16 @@ public class Main {
                     theater.viewSeating(input);
                     break;
 
-                case 11:
-                    saveData(theater);
-                    break;
-
-                case 12:
-                    if (warning(input))
-                        break;
-
-                    theater = loadData(theater);
-                    break;
+//                case 11:
+//                    saveData(theater);
+//                    break;
+//
+//                case 12:
+//                    if (warning(input))
+//                        break;
+//
+//                    theater = loadData(theater);
+//                    break;
 
 //                case 13:
 //                    TMDBAPI api = new TMDBAPI();

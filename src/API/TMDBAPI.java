@@ -3,7 +3,7 @@ package API;
 import Main.Movie;
 import com.google.gson.Gson;
 
-import java.lang.reflect.Type;
+//import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -65,7 +65,7 @@ public class TMDBAPI {
                 float rating = (float) result.getVote_average();
                 int numberOfRatings = result.getVote_count();
                 int id = result.getId();
-                System.out.println(id);
+//                System.out.println(id);
                 String genre = completeMovie(id);
 
                 movie = new Movie(title, releaseYear, genre, review, rating, numberOfRatings);
@@ -115,7 +115,7 @@ public class TMDBAPI {
                 }
                 //Close the scanner
                 scanner.close();
-                System.out.println(informationString);
+//                System.out.println(informationString);
 
                 Gson gson = new Gson();
                 ApiResponseMovies response = gson.fromJson(String.valueOf(informationString), ApiResponseMovies.class);

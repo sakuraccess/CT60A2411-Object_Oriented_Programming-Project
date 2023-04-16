@@ -1,11 +1,10 @@
 package API;
-
 import java.util.List;
 
 public class ApiResponseMovies {
     private boolean adult;
     private String backdropPath;
-    private Object belongsToCollection; // Use a custom class if the structure is known
+    private Collection belongsToCollection;
     private int budget;
     private List<Genre> genres;
     private String homepage;
@@ -15,11 +14,11 @@ public class ApiResponseMovies {
     private String originalTitle;
     private String overview;
     private double popularity;
-    private Object posterPath; // Can be null, hence using Object
+    private String posterPath;
     private List<ProductionCompany> productionCompanies;
     private List<ProductionCountry> productionCountries;
     private String releaseDate;
-    private int revenue;
+    private long revenue;
     private int runtime;
     private List<SpokenLanguage> spokenLanguages;
     private String status;
@@ -29,8 +28,35 @@ public class ApiResponseMovies {
     private double voteAverage;
     private int voteCount;
 
-    // Getters and setters
+    // Add constructors, getters, and setters here
 
+    public ApiResponseMovies(boolean adult, String backdropPath, Collection belongsToCollection, int budget, List<Genre> genres, String homepage, int id, String imdbId, String originalLanguage, String originalTitle, String overview, double popularity, String posterPath, List<ProductionCompany> productionCompanies, List<ProductionCountry> productionCountries, String releaseDate, long revenue, int runtime, List<SpokenLanguage> spokenLanguages, String status, String tagline, String title, boolean video, double voteAverage, int voteCount) {
+        this.adult = adult;
+        this.backdropPath = backdropPath;
+        this.belongsToCollection = belongsToCollection;
+        this.budget = budget;
+        this.genres = genres;
+        this.homepage = homepage;
+        this.id = id;
+        this.imdbId = imdbId;
+        this.originalLanguage = originalLanguage;
+        this.originalTitle = originalTitle;
+        this.overview = overview;
+        this.popularity = popularity;
+        this.posterPath = posterPath;
+        this.productionCompanies = productionCompanies;
+        this.productionCountries = productionCountries;
+        this.releaseDate = releaseDate;
+        this.revenue = revenue;
+        this.runtime = runtime;
+        this.spokenLanguages = spokenLanguages;
+        this.status = status;
+        this.tagline = tagline;
+        this.title = title;
+        this.video = video;
+        this.voteAverage = voteAverage;
+        this.voteCount = voteCount;
+    }
 
     public boolean isAdult() {
         return adult;
@@ -48,11 +74,11 @@ public class ApiResponseMovies {
         this.backdropPath = backdropPath;
     }
 
-    public Object getBelongsToCollection() {
+    public Collection getBelongsToCollection() {
         return belongsToCollection;
     }
 
-    public void setBelongsToCollection(Object belongsToCollection) {
+    public void setBelongsToCollection(Collection belongsToCollection) {
         this.belongsToCollection = belongsToCollection;
     }
 
@@ -128,11 +154,11 @@ public class ApiResponseMovies {
         this.popularity = popularity;
     }
 
-    public Object getPosterPath() {
+    public String getPosterPath() {
         return posterPath;
     }
 
-    public void setPosterPath(Object posterPath) {
+    public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 
@@ -160,11 +186,11 @@ public class ApiResponseMovies {
         this.releaseDate = releaseDate;
     }
 
-    public int getRevenue() {
+    public long getRevenue() {
         return revenue;
     }
 
-    public void setRevenue(int revenue) {
+    public void setRevenue(long revenue) {
         this.revenue = revenue;
     }
 
@@ -231,125 +257,194 @@ public class ApiResponseMovies {
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }
+}
 
-    // Nested classes for complex attributes
-    public static class Genre {
-        private int id;
-        private String name;
+class Collection {
+    private int id;
+    private String name;
+    private String posterPath;
+    private String backdropPath;
 
-        // Getters and setters
+    // Add constructors, getters, and setters here
 
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
+    public Collection(int id, String name, String posterPath, String backdropPath) {
+        this.id = id;
+        this.name = name;
+        this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
     }
 
-    public static class ProductionCompany {
-        private int id;
-        private String logoPath;
-        private String name;
-        private String originCountry;
-
-        // Getters and setters
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getLogoPath() {
-            return logoPath;
-        }
-
-        public void setLogoPath(String logoPath) {
-            this.logoPath = logoPath;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getOriginCountry() {
-            return originCountry;
-        }
-
-        public void setOriginCountry(String originCountry) {
-            this.originCountry = originCountry;
-        }
+    public int getId() {
+        return id;
     }
 
-    public static class ProductionCountry {
-        private String iso31661;
-        private String name;
-
-        // Getters and setters
-
-        public String getIso31661() {
-            return iso31661;
-        }
-
-        public void setIso31661(String iso31661) {
-            this.iso31661 = iso31661;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public static class SpokenLanguage {
-        private String iso6391;
-        private String name;
+    public String getName() {
+        return name;
+    }
 
-        private String english_name;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        // Getters and setters
+    public String getPosterPath() {
+        return posterPath;
+    }
 
-        public String getEnglish_name() {
-            return english_name;
-        }
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
 
-        public void setEnglish_name(String english_name) {
-            this.english_name = english_name;
-        }
+    public String getBackdropPath() {
+        return backdropPath;
+    }
 
-        public String getIso6391() {
-            return iso6391;
-        }
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+}
 
-        public void setIso6391(String iso6391) {
-            this.iso6391 = iso6391;
-        }
+class Genre {
+    private int id;
+    private String name;
 
-        public String getName() {
-            return name;
-        }
+    // Add constructors, getters, and setters here
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public Genre(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+class ProductionCompany {
+    private int id;
+    private String logoPath;
+    private String name;
+    private String originCountry;
+
+    // Add constructors, getters, and setters here
+
+    public ProductionCompany(int id, String logoPath, String name, String originCountry) {
+        this.id = id;
+        this.logoPath = logoPath;
+        this.name = name;
+        this.originCountry = originCountry;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
+    }
+}
+
+class ProductionCountry {
+    private String iso31661;
+    private String name;
+
+    // Add constructors, getters, and setters here
+
+    public ProductionCountry(String iso31661, String name) {
+        this.iso31661 = iso31661;
+        this.name = name;
+    }
+
+    public String getIso31661() {
+        return iso31661;
+    }
+
+    public void setIso31661(String iso31661) {
+        this.iso31661 = iso31661;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+class SpokenLanguage {
+    private String englishName;
+    private String iso6391;
+    private String name;
+
+    // Add constructors, getters, and setters here
+
+    public SpokenLanguage(String englishName, String iso6391, String name) {
+        this.englishName = englishName;
+        this.iso6391 = iso6391;
+        this.name = name;
+    }
+
+    public String getEnglishName() {
+        return englishName;
+    }
+
+    public void setEnglishName(String englishName) {
+        this.englishName = englishName;
+    }
+
+    public String getIso6391() {
+        return iso6391;
+    }
+
+    public void setIso6391(String iso6391) {
+        this.iso6391 = iso6391;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
