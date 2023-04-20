@@ -2,8 +2,8 @@ package Main;
 
 //import API.TMDBAPI;
 
-import java.io.*;
-import java.util.ArrayList;
+//import java.io.*;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -20,7 +20,6 @@ public class Menu {
                     "10. View seating\n" +
                     "0. Exit";
 
-
     public static void main(String[] args) {
 //        System.out.println("If you want to use existing data,\n" +
 //                "please choose 11 first.");
@@ -35,9 +34,9 @@ public class Menu {
             System.out.println(MENU);
             System.out.println("Enter your choice:");
 
-
             try {
                 option = Integer.parseInt(input.nextLine());
+
             } catch (Exception e) {
                 System.out.println("The input is not a valid number.");
                 continue;
@@ -88,33 +87,32 @@ public class Menu {
                     theater.viewSeating(input);
                     break;
 
-                case 11:
+ //Used for texting, only the movies will be saved into file "movies.ser".
+                /*case 11:
                     saveData(theater.getMovies());
                     break;
 
                 case 12:
-                    if (warning(input))
-                        break;
+                    if (warning(input)) break;
 
                     theater.setMovies(loadData());
                     break;
 
-//                case 13:
-//                    TMDBAPI api = new TMDBAPI();
-//                    api.getMovies("Jack Reacher");
-//                    break;
+                case 13:
+                    TMDBAPI api = new TMDBAPI();
+                    api.getMovies("Jack Reacher");
+                    break;*/
 
+                default:
+                    System.out.println("Invalid input number.\nPLease try again.");
             }
 
         }
 
     }
 
-
-    private static boolean warning(Scanner input) {
-        System.out.println("Changes you made in this procedure will be lost, continue?\n" +
-                "(Enter 'yes' to continue.)");
-
+   /*private static boolean warning(Scanner input) {
+        System.out.println("Changes you made in this procedure will be lost, continue?\n" + "(Enter 'yes' to continue.)");
 
         String confirmToken = input.nextLine();
 
@@ -140,8 +138,7 @@ public class Menu {
 
         } catch (IOException e) {
             movieData = null;
-            System.out.println("Data loading failed, please try again.\n" +
-                    "Do not find existing data.");
+            System.out.println("Data loading failed, please try again.\n" + "Do not find existing data.");
 
         } catch (ClassNotFoundException c) {
             movieData = null;
@@ -163,5 +160,5 @@ public class Menu {
         } catch (IOException e) {
             System.out.println("Failed to save data, please try again.");
         }
-    }
+    }*/
 }

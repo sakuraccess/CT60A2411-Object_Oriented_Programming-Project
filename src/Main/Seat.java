@@ -1,19 +1,9 @@
 package Main;
 
-public class Seat implements java.io.Serializable{
+public class Seat implements java.io.Serializable {
     private final int row;
     private final int column;
     private boolean available;
-
-    private int customerID;
-
-//    public int getCustomerID() {
-//        return customerID;
-//    }
-
-//    public void setCustomerID(int customerID) {
-//        this.customerID = customerID;
-//    }
 
     public Seat(int row, int column, boolean available) {
         this.row = row;
