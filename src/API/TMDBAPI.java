@@ -50,6 +50,20 @@ public class TMDBAPI {
 
                 if (results.isEmpty()) {
                     System.out.println("The movie you specified could not be found in the TMDB database.");
+                    System.out.println("Would you like to add the movie manually?");
+                    System.out.println("Enter 'yes' to confirm, anything else will cancel the addition.");
+
+                    String confirmToken = input.nextLine();
+
+                    if (confirmToken.equals("yes")) {
+                        System.out.println("Please enter it manually.\n");
+                        return manuallyAddition(input);
+
+                    } else {
+                        System.out.println("Removing operation cancelled.");
+
+                    }
+
                     return null;
                 }
 
@@ -124,6 +138,47 @@ public class TMDBAPI {
         }
 
         return movie;
+    }
+
+    private Movie manuallyAddition(Scanner input) {
+        System.out.println("Enter the title:");
+        String title = input.nextLine();
+
+        System.out.println("Enter the releaseTime:");
+        String releaseYear = input.nextLine();
+
+        System.out.println("Enter the genre(using the format like 'Comedy, Humor'):");
+        String genre = "[" + input.nextLine() + "]";
+
+        System.out.println("Enter the review:");
+        String review = input.nextLine();
+
+        float rating;
+        while (true) {
+            try {
+                System.out.println("Enter the rating:");
+                rating =  Float.parseFloat(input.nextLine());
+                break;
+
+            } catch (NumberFormatException n) {
+                System.out.println("The input is not a valid number.\nPlease try again.");
+            }
+        }
+
+
+        int numberOfRatings;
+        while (true) {
+            try {
+                System.out.println("Enter the numberOfRatings:");
+                numberOfRatings = Integer.parseInt(input.nextLine());
+                break;
+
+            } catch (NumberFormatException n) {
+                System.out.println("The input is not a valid number.\nPlease try again.");
+            }
+        }
+
+        return new Movie(title, releaseYear, genre, review, rating, numberOfRatings);
     }
 
     //    Searching for the genre based on the movie id, and return it.
