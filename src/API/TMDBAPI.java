@@ -73,7 +73,7 @@ public class TMDBAPI {
                     System.out.println("The movie you specified has some matches the TMDB database.\nHere are movies with titles similar to the one you specified.\n");
 
                     int resultNumber = 0;
-                    for (var eachResult : results) {
+                    for (ApiResponseSearch.Movie eachResult : results) {
                         System.out.println("Match No." + ++resultNumber);
                         System.out.println("Title: " + eachResult.title());
                         System.out.println("ReleaseYear: " + eachResult.release_date());
@@ -211,7 +211,7 @@ public class TMDBAPI {
                 Gson gson = new Gson();
                 ApiResponseMovies response = gson.fromJson(String.valueOf(informationString), ApiResponseMovies.class);
 
-                var genres = response.genres();
+                List<ApiResponseMovies.Genre> genres = response.genres();
 
                 if (genres.isEmpty()) {
                     return null;
@@ -219,7 +219,7 @@ public class TMDBAPI {
 
                 StringBuilder genreString = new StringBuilder("[");
 
-                for (var genre : genres) {
+                for (ApiResponseMovies.Genre genre : genres) {
                     genreString.append(genre.getName()).append(", ");
                 }
 
