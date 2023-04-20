@@ -402,7 +402,7 @@ class Theater extends Venue {
             return;
         }
 
-        var seats = showtime.getSeats();
+        Seat[][] seats = showtime.getSeats();
 
         for (Seat[] row : seats) {
             for (Seat column : row) {

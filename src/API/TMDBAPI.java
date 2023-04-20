@@ -46,7 +46,7 @@ public class TMDBAPI {
                 ApiResponseSearch response = gson.fromJson(String.valueOf(informationString), ApiResponseSearch.class);
 
 
-                List<ApiResponseSearch.Movie> results = response.results();
+                List<ApiResponseSearch.Movie> results = response.getResults();
 
                 if (results.isEmpty()) {
                     System.out.println("The movie you specified could not be found in the TMDB database.");
@@ -220,7 +220,7 @@ public class TMDBAPI {
                 StringBuilder genreString = new StringBuilder("[");
 
                 for (var genre : genres) {
-                    genreString.append(genre.name()).append(", ");
+                    genreString.append(genre.getName()).append(", ");
                 }
 
                 genreString.setLength(genreString.length() - 2);
