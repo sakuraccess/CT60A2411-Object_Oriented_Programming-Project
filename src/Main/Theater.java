@@ -5,12 +5,10 @@ import API.TMDBAPI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-//import org.apache.commons.lang3.*;
-//import commons-lang3;
 
 class Theater extends Venue {
     private final ArrayList<Showtime> showtimes = new ArrayList<>();
-    private ArrayList<Movie> movies = new ArrayList<>();
+    private final ArrayList<Movie> movies = new ArrayList<>();
 
 //    The seats shouldn't be in the theater, it has been placed in each Showtime.
 //    private Seat[][] seats;
@@ -20,10 +18,6 @@ class Theater extends Venue {
     }
 
     private Movie findMovie(Iterator<Movie> movieIterator, String title) {
-//        boolean found = false;
-
-//        Iterator<Movie> movieIterator = movies.iterator();
-
         while (movieIterator.hasNext()) {
             Movie movie = movieIterator.next();
             if (movie.getTitle().equals(title)) {
@@ -36,15 +30,10 @@ class Theater extends Venue {
     }
 
     private Showtime findShowtime(Iterator<Showtime> showtimeIterator, String date, String time) {
-//        boolean found = false;
-
-//        Iterator<Movie> movieIterator = movies.iterator();
-
         while (showtimeIterator.hasNext()) {
             Showtime showtime = showtimeIterator.next();
             if (showtime.getDate().equals(date) && showtime.getTime().equals(time)) {
                 return showtime;
-//                break;
             }
         }
 
@@ -55,17 +44,30 @@ class Theater extends Venue {
         System.out.println("Enter the movie title:");
         String title = input.nextLine();
 
-        TMDBAPI api = new TMDBAPI();
-        Movie movie = api.searchMovie(title);
+        Iterator<Movie> movieIterator = movies.iterator();
 
-//        for (Movie movie : movies) {
-//            if (title.equals(movie.getTitle())) {
-//                System.out.println("""
-//                        There already have this movie.
-//                        Do you want to edit it?
-//               """);
-//            }
-//        }
+        if (findMovie(movieIterator, title) != null) {
+            System.out.println("The movie already exists. Do you want to override it?");
+            System.out.println("Enter 'yes' to confirm.");
+
+            String confirmToken = input.nextLine();
+
+            if (confirmToken.equals("yes")) {
+                movieIterator.remove();
+                System.out.println("Successful removed old one.");
+                System.out.println("Then please enter the new one.\n");
+            } else {
+                System.out.println("Removing operation cancelled.");
+                return;
+            }
+        }
+
+        TMDBAPI api = new TMDBAPI();
+        Movie movie = api.searchMovie(title, input);
+
+        if (movie == null) {
+            return;
+        }
 
         System.out.println("Enter the director:");
         String director = input.nextLine();
@@ -78,9 +80,9 @@ class Theater extends Venue {
                 duration = Integer.parseInt(input.nextLine());
                 movie.setDuration(duration);
                 break;
+
             } catch (Exception e) {
                 System.out.println("Please enter a legal integer.\n" + "Try again.");
-
             }
         }
 
@@ -93,25 +95,17 @@ class Theater extends Venue {
         System.out.println("Enter the movie title:");
         String title = input.nextLine();
 
-//        boolean found = false;
-//
-//        Iterator<Movie> movieIterator = movies.iterator();
-//
-//        while (movieIterator.hasNext()) {
-//            Movie movie = movieIterator.next();
-//            if (movie.getTitle().equals(title)) {
-//                found = true;
-//                break;
-//            }
-//        }
         Iterator<Movie> movieIterator = movies.iterator();
         Movie movie = findMovie(movieIterator, title);
 
-//        if (!found) {
         if (movie == null) {
             System.out.println("The movie you selected doesn't exit.");
             return;
         }
+
+        System.out.println("Here is the movie you want to remove.");
+
+        printMovieInfo(movie);
 
         System.out.println("Are you sure you want to delete this movie?\n" + "Enter 'yes' to confirm.");
 
@@ -167,15 +161,12 @@ class Theater extends Venue {
     }
 
     public void viewAllMovies() {
-        Iterator<Movie> movieIterator = movies.iterator();
-
-        if (!movieIterator.hasNext()) {
-            System.out.println("There doesn't have movies right now.");
+        if (movies.isEmpty()) {
+            System.out.println("No movie has been added yet.");
             return;
         }
 
-        while (movieIterator.hasNext()) {
-            var movie = movieIterator.next();
+        for (Movie movie : movies) {
             printMovieInfo(movie);
         }
 
@@ -188,7 +179,7 @@ class Theater extends Venue {
 
         Iterator<Movie> movieIterator = movies.iterator();
 
-        var movie = findMovie(movieIterator, title);
+        Movie movie = findMovie(movieIterator, title);
 
         if (movie == null) {
             System.out.println("The movie you selected doesn't exit.");
@@ -200,6 +191,40 @@ class Theater extends Venue {
 
         System.out.println("Enter the date of the showtime (e.g. 2022-12-15):");
         String date = input.nextLine();
+
+
+        Iterator<Showtime> showtimeIterator = showtimes.listIterator();
+        Showtime showtime = findShowtime(showtimeIterator, date, time);
+
+        if (showtime != null) {
+            boolean override = false;
+            if (showtime.getMovie().getTitle().equals(title)) {
+                System.out.println("The showtime for this movie already existed at the time.\nDo you want to reset its fare?");
+            } else {
+                System.out.println("This showtime is gearing up for another movie.\nDo you want to override it?");
+                override = true;
+            }
+
+            System.out.println("Enter 'yes' to confirm.");
+
+            String confirmToken = input.nextLine();
+
+            if (confirmToken.equals("yes")) {
+                showtimeIterator.remove();
+                System.out.println("Successful removed old one.");
+
+                if (override) {
+                    System.out.println("Then please enter the new one.\n");
+                } else {
+                    System.out.println("Then please enter the new ticket price.\n");
+                }
+
+            } else {
+                System.out.println("Operation cancelled.");
+                return;
+            }
+
+        }
 
         double ticketPrice;
         while (true) {
@@ -235,6 +260,10 @@ class Theater extends Venue {
             System.out.println("The showtime you selected doesn't exit.");
             return;
         }
+
+        System.out.println("Here is the showtime you want to remove.");
+
+        printShowtimeInfo(showtime);
 
         System.out.println("Are you sure you want to delete this showtime?\n" + "Enter 'yes' to confirm.");
 
@@ -274,6 +303,11 @@ class Theater extends Venue {
     }
 
     public void viewAllShowtime() {
+        if (showtimes.isEmpty()) {
+            System.out.println("No showtime has been arranged yet.");
+            return;
+        }
+
         for (Showtime showtime : showtimes) {
             printShowtimeInfo(showtime);
         }
@@ -291,6 +325,35 @@ class Theater extends Venue {
         System.out.println("Enter the showtime (date):");
         String date = input.nextLine();
 
+        Iterator<Showtime> showtimeIterator = showtimes.iterator();
+        Showtime showtime = findShowtime(showtimeIterator, date, time);
+
+        if (showtime == null) {
+            System.out.println("The showtime you selected doesn't exit.");
+            return;
+        }
+
+        Seat[][] seats = showtime.getSeats();
+        boolean fullSeats = true;
+
+        for (Seat[] rows : seats) {
+            for (Seat column : rows) {
+                if (column.isAvailable()) {
+                    fullSeats = false;
+                    break;
+                }
+            }
+
+            if (!fullSeats) {
+                break;
+            }
+        }
+
+        if (fullSeats) {
+            System.out.println("All seats for this time period are sold out.");
+            return;
+        }
+
         System.out.println("Enter the seat (row and column):");
 
         int row, column;
@@ -303,24 +366,12 @@ class Theater extends Venue {
                 break;
 
             } catch (Exception e) {
-                System.out.println("The input is not a valid number.\n" + "Please try again.");
+                System.out.println("The input is not a valid number.\nPlease try again.");
 
             }
         }
 
-        Iterator<Showtime> showtimeIterator = showtimes.iterator();
-        Showtime showtime = findShowtime(showtimeIterator, date, time);
-
-        if (showtime == null) {
-            System.out.println("The showtime you selected doesn't exit.");
-            return;
-        }
-
-        Seat[][] seats = showtime.getSeats();
-        row -= 1;
-        column -= 1;
-
-        if (seats[row][column].isAvailable()) {
+        if (seats[--row][--column].isAvailable()) {
             showtimeIterator.remove();
             seats[row][column].setAvailable(false);
             showtime.setSeats(seats);
@@ -353,9 +404,9 @@ class Theater extends Venue {
 
         var seats = showtime.getSeats();
 
-        for (int row = 0; row < 10; row++) {
-            for (int column = 0; column < 10; column++) {
-                if (seats[row][column].isAvailable()) {
+        for (Seat[] row : seats) {
+            for (Seat column : row) {
+                if (column.isAvailable()) {
                     System.out.print("[0] ");
                 } else {
                     System.out.print("[X] ");
@@ -365,19 +416,19 @@ class Theater extends Venue {
         }
     }
 
-    public ArrayList<Movie> getMovies() {
+    /*public ArrayList<Movie> getMovies() {
         return movies;
     }
 
-//    public ArrayList<Showtime> getShowtimes() {
-//        return showtimes;
-//    }
+    public ArrayList<Showtime> getShowtimes() {
+        return showtimes;
+    }
 
     public void setMovies(ArrayList<Movie> movies) {
         this.movies = movies;
     }
 
-//    public void setShowtimes(ArrayList<Showtime> showtimes) {
-//        this.showtimes = showtimes;
-//    }
+    public void setShowtimes(ArrayList<Showtime> showtimes) {
+        this.showtimes = showtimes;
+    }*/
 }

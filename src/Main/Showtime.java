@@ -6,7 +6,6 @@ public class Showtime implements java.io.Serializable {
     private final String time;
     private final double ticketPrice;
     private Seat[][] seats = new Seat[10][10];
-//    private Boolean[][] seats = new Boolean[10][10];
 
     public Showtime(Movie movie, String date, String time, double ticketPrice) {
         this.movie = movie;
@@ -24,8 +23,6 @@ public class Showtime implements java.io.Serializable {
         return seats;
     }
 
-//    private int ticketsSold = 0;
-
     public void setSeats(Seat[][] seats) {
         this.seats = seats;
     }
@@ -34,33 +31,18 @@ public class Showtime implements java.io.Serializable {
         return movie;
     }
 
-//    public void setMovie(Main.Movie movie) {
-//        this.movie = movie;
-//    }
-
     public String getDate() {
         return date;
     }
-
-//    public void setDate(String date) {
-//        this.date = date;
-//    }
 
     public String getTime() {
         return time;
     }
 
-//    public void setTime(String time) {
-//        this.time = time;
-//    }
-
     public double getTicketPrice() {
         return ticketPrice;
     }
 
-//    public void setTicketPrice(double ticketPrice) {
-//        this.ticketPrice = ticketPrice;
-//    }
 }
 
 

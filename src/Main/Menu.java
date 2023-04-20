@@ -1,9 +1,5 @@
 package Main;
 
-//import API.TMDBAPI;
-
-//import java.io.*;
-//import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -21,9 +17,6 @@ public class Menu {
                     "0. Exit";
 
     public static void main(String[] args) {
-//        System.out.println("If you want to use existing data,\n" +
-//                "please choose 11 first.");
-
         Theater theater = new Theater("LUT Kino", "Yliopistonkatu");
 
         Scanner input = new Scanner(System.in);
@@ -87,7 +80,7 @@ public class Menu {
                     theater.viewSeating(input);
                     break;
 
- //Used for texting, only the movies will be saved into file "movies.ser".
+//                    Used for texting, only the movies will be saved into file "movies.ser".
                 /*case 11:
                     saveData(theater.getMovies());
                     break;
@@ -111,6 +104,7 @@ public class Menu {
 
     }
 
+//    Functions used for texting.
    /*private static boolean warning(Scanner input) {
         System.out.println("Changes you made in this procedure will be lost, continue?\n" + "(Enter 'yes' to continue.)");
 
