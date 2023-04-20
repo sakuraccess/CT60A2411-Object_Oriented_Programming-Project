@@ -55,7 +55,7 @@ public class TMDBAPI {
 
                 ApiResponseSearch.Movie result;
 
-                if (!results.get(0).title().equals(title)) {
+                if (results.size() != 1) {
                     System.out.println("The movie you specified has some matches the TMDB database.\nHere are movies with titles similar to the one you specified.\n");
 
                     int resultNumber = 0;
@@ -80,8 +80,13 @@ public class TMDBAPI {
                     int resultNumberChosen;
                     while (true) {
                         try {
-                            System.out.println("Please select a similar movie you want to add, using the single \"Match Number\":");
+                            System.out.println("Please select a similar movie you want to add, using the single \"Match Number\".");
+                            System.out.println("If you want to cancel the addition, please enter '0'.");
                             resultNumberChosen = Integer.parseInt(input.nextLine());
+
+                            if (resultNumberChosen == 0) {
+                                return null;
+                            }
 
                             if (resultNumberChosen < 0 || resultNumberChosen > 10) {
                                 System.out.println("Integer not between 1 and 10.");
