@@ -174,6 +174,11 @@ class Theater extends Venue {
     }
 
     public void addShowtime(Scanner input) {
+        if (movies.isEmpty()) {
+            System.out.println("No movie has been added yet.");
+            return;
+        }
+
         System.out.println("Enter the title of the movie:");
         String title = input.nextLine();
 
@@ -354,15 +359,18 @@ class Theater extends Venue {
             return;
         }
 
-        System.out.println("Enter the seat (row and column):");
-
         int row, column;
 
         while (true) {
             try {
-                row = Integer.parseInt(input.next());
-                column = Integer.parseInt(input.next());
-                input.nextLine();
+                System.out.println("Enter the seat (row and column, separate by blank, like '5 6'):");
+                String line = input.nextLine();
+//                row = Integer.parseInt(input.next());
+//                column = Integer.parseInt(input.next());
+//                input.nextLine();
+                String[] values = line.split(" ");
+                row = Integer.parseInt(values[0]);
+                column = Integer.parseInt(values[1]);
                 break;
 
             } catch (Exception e) {
