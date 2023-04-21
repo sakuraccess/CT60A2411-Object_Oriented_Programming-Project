@@ -363,19 +363,22 @@ class Theater extends Venue {
 
         while (true) {
             try {
-                System.out.println("Enter the seat (row and column, separate by blank, like '5 6'):");
+                System.out.println("Enter the seat (row and column, both between 1 to 10, separate by blank, like '5 6'):");
                 String line = input.nextLine();
-//                row = Integer.parseInt(input.next());
-//                column = Integer.parseInt(input.next());
-//                input.nextLine();
                 String[] values = line.split(" ");
                 row = Integer.parseInt(values[0]);
                 column = Integer.parseInt(values[1]);
+
+                if (row > 10 || row < 0 || column > 10 || column < 0) {
+                    throw new ArrayIndexOutOfBoundsException();
+                }
                 break;
 
-            } catch (Exception e) {
+            } catch (NumberFormatException n) {
                 System.out.println("The input is not a valid number.\nPlease try again.");
 
+            } catch (ArrayIndexOutOfBoundsException a) {
+                System.out.println("The number you entered is out of bound.\nPlease try again.");
             }
         }
 
